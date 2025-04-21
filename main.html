@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartKargo Locations by State</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        select {
+            padding: 5px;
+            min-width: 150px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            position: sticky; /* Make header sticky */
+            top: 0; /* Stick to the top */
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tbody tr:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bases Atendidas</h1>
+
+    <div>
+        <label for="uf-select">Filtrar por Estado (UF):</label>
+        <select id="uf-select">
+            <option value="all">Todos os Estados</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AM">AM</option>
+            <option value="AP">AP</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MG">MG</option>
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="PR">PR</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="RS">RS</option>
+            <option value="SC">SC</option>
+            <option value="SE">SE</option>
+            <option value="SP">SP</option>
+            <option value="TO">TO</option>
+        </select>
+    </div>
+
+    <table id="locations-table">
+        <thead>
+            <tr>
+                <th>SIGLA SMARTKARGO</th>
+                <th>ENDEREÇO</th>
+                <th>BAIRRO</th>
+                <th>CIDADE</th>
+                <th>UF</th>
+                <th>CEP</th>
+                <th>HORÁRIO DE ATENDIMENTO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Page 1 Data -->
+            <tr data-uf="MG"><td>AAX</td><td>Rua Dom José Gaspar, 597-B</td><td>CENTRO</td><td>ARAXA</td><td>MG</td><td>38183-188</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="PR"><td>ACA02</td><td>Av. Alfred Charvet, 610, Vila PR/CEP: 83703-278</td><td>VILA NOVA</td><td>ARAUCARIA</td><td>PR</td><td>83703-278</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="MT"><td>AFL</td><td>R. Ne-D-St. D,285 Alta Floresta - MT</td><td>SETOR H</td><td>ALTA FLORESTA</td><td>MT</td><td>78580-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>AIF01</td><td>Rua Jose Teodoro, 137/Sala 3</td><td>VILA XAVIER</td><td>ASSIS</td><td>SP</td><td>19800-055</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="MT"><td>AIR</td><td>R COMENDADOR MANOEL PEDRO DE OLIVEIRA,51</td><td>CENTRO</td><td>ARIPUANA</td><td>MT</td><td>78325-000</td><td>2a. A sex 08:00h as 18:00h; sáb. 08:00h as 12:00h.</td></tr>
+            <tr data-uf="SP"><td>AJA02</td><td>Rua Zeferino Barbosa de Souza, 51</td><td>BARBOSAS</td><td>ARUJA</td><td>SP</td><td>07402-040</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SE"><td>AJU</td><td>Av. Jose Menezes Prudente-N 353</td><td>AEROPORTO</td><td>ARACAJU</td><td>SE</td><td>49037-390</td><td>2a. À sex 08:00h às 17:00h. Sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="RS"><td>ALQ</td><td>Rua Visconde de Tamandare, 319</td><td>CENTRO</td><td>ALEGRETE</td><td>RS</td><td>97541-520</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="SP"><td>AMP01</td><td>Rua Marechal Bitencourt, 380</td><td>RIBEIRAO</td><td>AMPARO</td><td>SP</td><td>13904-050</td><td>2a. À sex 08:00h às 18:00h. Sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="PA"><td>ANA01</td><td>Rua AZ de Ouro, 1 Providencia Ananindeua - PÁ CEP: 67015-760</td><td>LEVILANDIA</td><td>ANANINDEUA</td><td>PA</td><td>67015-760</td><td>2a. À sex 08:00h às 18:00h. Sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="GO"><td>APD01</td><td>AV DONA MARIA CARDOSO</td><td>VILA SÃO TOMAZ</td><td>APARECIDA DE GOIANIA</td><td>GO</td><td>74915-520</td><td>2a. À sex 09:00h às 18:00h. Sab. 08:00h às 12:00h</td></tr>
+            <tr data-uf="GO"><td>APD02</td><td>Alameda Jaime Camara S/N Qd. 012 Lote 01/12/13, Cond. All Park Polo Empresarial/Parque Industrial, Aparecida de Goiana GO</td><td>ALL PARK POLO EMPRESARIAL</td><td>APARECIDA DE GOIANIA</td><td>GO</td><td>74988-860</td><td>2a. À sex 09:00h às 18:00h. Sab. 08:00h às 12:00h</td></tr>
+            <tr data-uf="AL"><td>APQ01</td><td>Rua Marechal Deodoro da Fonseca, 699</td><td>BRASILIA</td><td>ARAPIRACA</td><td>AL</td><td>57313-010</td><td>2a. À sex 08:00h às 18:00h. Sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="GO"><td>APS02</td><td>Avenida Juscelino Kubitschek, 1555</td><td>JUNDIAL</td><td>ANÁPOLIS</td><td>GO</td><td>75110-390</td><td>2a. À sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="GO"><td>APS03</td><td>Av. Goiás, 1172</td><td>CENTRO</td><td>ANÁPOLIS</td><td>GO</td><td>75025-045</td><td>2a. À sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>AQA</td><td>Rua Luiz Paulillo, 176</td><td>NOVA ARAQUARA</td><td>ARARAQUARA</td><td>SP</td><td>14804-193</td><td>2a. À sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="RO"><td>ARM01</td><td>R FORTALEZA, 2115, SETOR 03 QUADRA01 LOTE 11 SALA C</td><td>SETOR 03</td><td>ARIQUEMES</td><td>RO</td><td>76870-140</td><td>2a. À sex 08:00h às 17:30h</td></tr>
+            <tr data-uf="SP"><td>ARU</td><td>Rua Tabajaras, 370</td><td>CENTRO</td><td>ARAÇATUBA</td><td>SP</td><td>16010-390</td><td>2a. A sex 09:00h às 19:00hs</td></tr>
+            <tr data-uf="PA"><td>ATM</td><td>Avenida Brigadeiro Eduardo Gomes, 3420</td><td>ESPLANADA DO XINGU</td><td>ALTAMIRA</td><td>PA</td><td>68372-005</td><td>2a. A sex 08:00h às 17:00h;</td></tr>
+            <tr data-uf="TO"><td>AUX01</td><td>R PREFEITO JOÃO DE SOUZA LIMA, 195, SAO JOAO, ARAGUAINA-TO/CEP 77.807-160</td><td>SAO JOAQ</td><td>ARAGUAINA</td><td>TO</td><td>77807-160</td><td>2a. A sex 08:00h às 18:00h; sáb. 8:00h às 12:00h.</td></tr>
+            <tr data-uf="SC"><td>AXE01</td><td>Av. Brasil, 2299</td><td>CASTELO BRANCO</td><td>XANXERE</td><td>SC</td><td>89820-000</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="SC"><td>BAC01</td><td>RUA DOM DANIEL, 199</td><td>VILA REAL</td><td>BALNEÁRIO CAMBORIÚ</td><td>SC</td><td>88337-040</td><td>2a. A sexta 08:00 as 18:00</td></tr>
+            <tr data-uf="PA"><td>BEL01</td><td>Rua Domingos Marreiros, 400</td><td>UMARIZAL</td><td>BELÉM</td><td>PA</td><td>66055-210</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="PA"><td>BEL02</td><td>R RODOLFO CHERMONT, 100, LOJA B</td><td>MARAMBAIA</td><td>BELÉM</td><td>PA</td><td>66615-170</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="PA"><td>BEL</td><td>Avenida Julio Cesar, s/n - Terminal de Cargas Aeroporto</td><td>VAL-DE-CANS</td><td>BELÉM</td><td>PA</td><td>66617-420</td><td>2a. A sex 07:00h às 20:00h; sáb. 07:00h às 14:00h.</td></tr>
+            <tr data-uf="RS"><td>BGV03</td><td>Rua Pernambuco, 366</td><td>HUMAITA</td><td>BENTO GONÇALVES</td><td>RS</td><td>95705-052</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="MG"><td>BHZ01</td><td>Av. Martinica, № 19</td><td>SANTA BRANCA</td><td>BELO HORIZONTE</td><td>MG</td><td>31565-400</td><td>2a à sex 08:30 às 18:00 Sábado fechado</td></tr>
+            <tr data-uf="MG"><td>BHZ03</td><td>Rua Libero Badaró.370 LJ 01</td><td>SANTA ROSA</td><td>BELO HORIZONTE</td><td>MG</td><td>31255-620</td><td>2a. À sex 09:00h às 19:00h.</td></tr>
+            <tr data-uf="MG"><td>BHZ04</td><td>AVENIDA ALVARES CABRAL 980, LOJA 02</td><td>LOURDES</td><td>BELO HORIZONTE</td><td>MG</td><td>30170-002</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="MG"><td>BHZOS</td><td>AV SINFRONIO BROCHADO, 536, LOJA 02</td><td>BARREIRO</td><td>BELO HORIZONTE</td><td>MG</td><td>30640-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>BJP01</td><td>AV ANTONIO PIRES PIMENTEL</td><td>CENTRO</td><td>BRAGANCA PAULISTA</td><td>SP</td><td>12900-011</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SC"><td>BNU02</td><td>Rua São Paulo, 3010</td><td>ITOUPAVA SECA</td><td>BLUMENAU</td><td>SC</td><td>89030-000</td><td>2a. A sexta 08:00 as 18:00</td></tr>
+            <tr data-uf="MT"><td>BPG</td><td>Travessa voluntários da Pátria, 04, Setor Sul, Edificio Garcia, Barra do Garças MT</td><td>SETOR SUL II</td><td>BARRA DO GARÇAS</td><td>MT</td><td>78600-138</td><td>2a. A sex 07:30h as 11:30h; Retorno 13:30 até as 17:30</td></tr>
+            <tr data-uf="BA"><td>BPS</td><td>Estrada do Aeroporto, S/N-Box Área Externa</td><td>AEROPORTO</td><td>PORTO SEGURO</td><td>BA</td><td>45810-000</td><td>2a. A sex 08:00h às 17:00h; sáb. 10:00h às 14:00h.</td></tr>
+            <tr data-uf="SP"><td>BQR01</td><td>AV Anapolis, 204</td><td>VILA NILVA</td><td>BARUERI</td><td>SP</td><td>06404-250</td><td>2a. A sex 09:00h às 18:00hs.</td></tr>
+            <tr data-uf="BA"><td>BRA</td><td>Rua Marechal Deodoro, N 552</td><td>VILA DULCE</td><td>BARREIRAS</td><td>BA</td><td>47800-272</td><td>2a. À sex 08:00h às 18:00h. Sab. Fechado Dom. Fechado</td></tr>
+            <tr data-uf="DF"><td>BSB01</td><td>Sq Shcgn CLR 713 Bloco F,</td><td>ASA NORTE</td><td>BRASÍLIA</td><td>DF</td><td>70760-536</td><td>2a A sex 8h00 às 18h</td></tr>
+            <tr data-uf="DF"><td>BSB02</td><td>Avenida Araucarias Lote 4530/4790-Loja 26</td><td>AGUAS CLARAS SUL</td><td>BRASÍLIA</td><td>DF</td><td>71936-250</td><td>2a. A sex 08:00h às 17:00h</td></tr>
+            <tr data-uf="DF"><td>BSB04</td><td>QQNL 30 CONJUNTO A LOTE, 10, LOJA 03</td><td>TAGUATINGA NORTE (TAGUATINGA)</td><td>BRASÍLIA</td><td>DF</td><td>72162-301</td><td>2a. A sex 8h00h às 18:00h</td></tr>
+            <tr data-uf="DF"><td>BSB</td><td>Aeroporto Internacional de Brasilia, TECA Infraero-sala 03</td><td>LAGO SUL</td><td>BRASÍLIA</td><td>DF</td><td>71608-900</td><td>2a. A sex 08:00h às 20:00h;</td></tr>
+            <tr data-uf="RR"><td>BVB</td><td>Rua Cecilia Brasil, 491</td><td>CENTRO</td><td>BOA VISTA</td><td>RR</td><td>69301-180</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 11:00h</td></tr>
+            <tr data-uf="RO"><td>BVH</td><td>Av. Roni de Castro, nº 3930, sala 5,</td><td>JARDIM AMÉRICA</td><td>VILHENA</td><td>RO</td><td>76980-000</td><td>2a. A sex 08:00h às 17h30h; Sab 08:00h às 12h00h</td></tr>
+            <tr data-uf="SP"><td>BVJ01</td><td>Rua Quatorze de Julho, 493 Centro, São João da Boa Vista.</td><td>VILA CONRADO</td><td>SÃO JOÃO DA BOA VISTA</td><td>SP</td><td>13870-742</td><td>2a. A sex 08:00h às 17:00h;</td></tr>
+            <tr data-uf="PA"><td>BVS</td><td>Tv Justo Chermont,981</td><td>CENTRO</td><td>BREVES</td><td>PA</td><td>68800-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="PR"><td>CAC01</td><td>Rua Jorge Lacerda, 683</td><td>CENTRO</td><td>CASCAVEL</td><td>PR</td><td>85811-350</td><td>2a. À sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="PR"><td>CAC</td><td>Avenida Assunção, 546</td><td>CENTRO</td><td>CASCAVEL</td><td>PR</td><td>85805-030</td><td>2a. A sex 08:30h às 12:00h e 13:00h às 18:00h</td></tr>
+            <tr data-uf="PE"><td>CAU01</td><td>Rua Projetada R6, 84</td><td>LUIZ GONZAGA</td><td>CARUARU</td><td>PE</td><td>55002-970</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="PR"><td>CBW</td><td>AV MANOEL MENDES DE CAMARGO, 2380, Sala 2</td><td>CENTRO</td><td>CAMPO MOURÃO</td><td>PR</td><td>87303-115</td><td>2a. À sex 09:00h às 18:00h.</td></tr>
+            <tr data-uf="SC"><td>CC01</td><td>R LAURY RIBEIRO NEVES, 203, SALA COMERCIAL 02, SAO MIGUEL, CONCORDIA, SC/CEP 89.710-898</td><td>SAO MIGUEL</td><td>CONCORDIA</td><td>SC</td><td>89710-898</td><td>07:00 as 17.40 sábado fechado</td></tr>
+            <tr data-uf="SC"><td>CCM</td><td>Av Santos Dumont, 2260, SALA 02</td><td>SAO LUIZ</td><td>CRICIÚMA</td><td>SC</td><td>88803-200</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="RS"><td>CEL</td><td>Av Osvaldo Aranha, 570</td><td>CENTRO</td><td>CANELA</td><td>RS</td><td>95680-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="RJ"><td>CFB</td><td>AV JULIA KUBITSCHEK, 200, LOJA 25</td><td>JARDIM FLAMBOYANT</td><td>CABO FRIO</td><td>RJ</td><td>28905-000</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="MT"><td>CGB04</td><td>Rua Miranda Reis, 292</td><td>POCAO</td><td>CUIABÁ</td><td>MT</td><td>78015-640</td><td>2a. A sex 08:00h às 18:00h e Sab 08:00h às 12:00</td></tr>
+            <tr data-uf="MT"><td>CGBOS</td><td>AV DEPUTADO MILTON TEIXEIRA DE FIGUEREDO (ST NORTE), 750A</td><td>MORADA DO OURO</td><td>CUIABÁ</td><td>MT</td><td>78053-500</td><td>2a. A sex 08:00h às 17:30h</td></tr>
+            <tr data-uf="MT"><td>CGB</td><td>Avenida Governador Ponce de Arruda, s/n - Terminais Arco Norte</td><td>JARDIM AEROPORTO</td><td>CUIABÁ</td><td>MT</td><td>78110-971</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="SP"><td>CGH</td><td>Rua Tamoios, 685-Jardim Aeroporto Sao Paulo/SP CEP 04630-001</td><td>JABAQUARA</td><td>SÃO PAULO</td><td>SP</td><td>04342-011</td><td>24 HORAS</td></tr>
+            <tr data-uf="MS"><td>CGR01</td><td>RUA JOSE ANTONIO, 1717, SALA 05</td><td>JARDIM DOS ESTADOS</td><td>CAMPO GRANDE</td><td>MS</td><td>79002-401</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="MS"><td>CGR02</td><td>R DOUTOR EULER DE AZEVEDO 825, SALA 04</td><td>SÃO FRANCISCO</td><td>CAMPO GRANDE</td><td>MS</td><td>79118-000</td><td>2a. A sex 08:00h às 19:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="MS"><td>CGR</td><td>Avenida Duque de Caxias, S/N Aeroporto Internacional Terminal de Cargas Infraero</td><td>PARQUE RESIDENCIAL IRACY COELHO NETTO</td><td>CAMPO GRANDE</td><td>MS</td><td>79101-901</td><td>2a. A sex 08:00h às 19:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="PA"><td>CKS</td><td>Rua E, 313-Quadra 044-LT 020</td><td>CIDADE NOVA</td><td>PARAUAPEBAS</td><td>PA</td><td>68515-000</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="GO"><td>CLV</td><td>AL DAS THERMAS</td><td>DO TURISTA</td><td>CALDAS NOVAS</td><td>GO</td><td>75.696-002</td><td>Seg à Sex-8:00 às 18:00</td></tr>
+            <tr data-uf="MS"><td>CMG</td><td>Avenida Porto Carraro, 420</td><td>CENTRO</td><td>CORUMBÁ</td><td>MS</td><td>79302-110</td><td>07:00 às 17:00 horas</td></tr>
+            <tr data-uf="MG"><td>CNF</td><td>eroporto Internacional Tancredo Neves, S/Nº -Rod Minas Gerais - km 10</td><td>AEROPORTO</td><td>CONFINS</td><td>MG</td><td>33500-900</td><td>06:00 às 00:00 de seg. à sex. Sáb. das 06:00 às 16:00. Dom Fechado</td></tr>
+            <tr data-uf="SP"><td>CPQ01</td><td>Avenida Papa Paulo VI, 614</td><td>JD DO TREVO</td><td>CAMPINAS</td><td>SP</td><td>13040-000</td><td>Seg a sexta 08:00 as 18:00</td></tr>
+            <tr data-uf="SP"><td>CPQ03</td><td>Rua Manuel Francisco, 529</td><td>JD DO TREVO</td><td>CAMPINAS</td><td>SP</td><td>13030-110</td><td>08:30 as 17:30 segunda a sexta</td></tr>
+            <tr data-uf="SP"><td>CPQ04</td><td>R DOUTOR ARMANDO SALES DE OLIVEIRA, 519, LOJA 02</td><td>TAQUARAL</td><td>CAMPINAS</td><td>SP</td><td>13076-015</td><td>Seg a Sex 09:30 as 17:00</td></tr>
+            <tr data-uf="PB"><td>CPV</td><td>Av. Jornalista Assis Chateaubriand, Num 2550, Galpão 02</td><td>TAMBOR</td><td>CAMPINA GRANDE</td><td>PB</td><td>58414-500</td><td>2 a sex 08:00h as 18:00h. Sab 08:00h as 12:00h</td></tr>
+            <tr data-uf="PE"><td>CSG01</td><td>AV PRESIDENTE GETULIO VARGAS.282</td><td>CENTRO</td><td>CABO DE SANTO AGOSTINHO</td><td>PE</td><td>54510-430</td><td>2a. Á sex 08:00h ás 18:00h.</td></tr>
+            <tr data-uf="RS"><td>CSU</td><td>Rua 28 de Setembro, 975</td><td>CENTRO</td><td>SANTA CRUZ DO SUL</td><td>RS</td><td>96810-174</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="MG"><td>CTG02</td><td>Avenida José Faria da Rocha, 1826</td><td>ELDORADO</td><td>CONTAGEM</td><td>MG</td><td>32315-040</td><td>2a A Sex 08:30h as 18:00h</td></tr>
+            <tr data-uf="PA"><td>CTL01</td><td>Travessa Conego Luis Leitão, 2273</td><td>CENTRO</td><td>CASTANHAL</td><td>PA</td><td>68743-020</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="PR"><td>CWB03</td><td>BR 116 N° 18232</td><td>Pinheirinho</td><td>CURITIBA</td><td>PR</td><td>81020-490</td><td>2a. A sex 08:00h às 19:00h</td></tr>
+            <tr data-uf="PR"><td>CWB05</td><td>Rua Desembargador Westphalen, 1796-Loja 1</td><td>REBOUÇAS</td><td>CURITIBA</td><td>PR</td><td>80230-100</td><td>2a. A sex 08:30h às 18:30h; sáb. 09:00h às 12:00h.</td></tr>
+            <tr data-uf="PR"><td>CWB</td><td>Avenida Rocha Pombo S/N</td><td>AGUAS BELAS</td><td>SÃO JOSÉ DOS PINHAIS</td><td>PR</td><td>83010-900</td><td>2a. A sex 06:00h às 00:00h; sáb. 06:00h às 18:00h. Dom.9:00 às 17:00</td></tr>
+            <tr data-uf="RS"><td>CXJ</td><td>Avenida Salgado Filho, 3451- Bairro São Leopoldo - Terminal de Cargas</td><td>SALGADO FILHO</td><td>CAXIAS DO SUL</td><td>RS</td><td>95098-420</td><td>2a. A sex 08:00h as 18:00h</td></tr>
+            <tr data-uf="RS"><td>CX103</td><td>JACOB LUCHESI, 1974, LOJA 03, SANTA LUCIA, CAXIAS DO SUL-RS/CEP95.032-000</td><td>SANTA LUCIA</td><td>CAXIAS DO SUL</td><td>RS</td><td>95032-000</td><td>2a. A Sex 08:00h às 17:30h</td></tr>
+            <tr data-uf="MG"><td>DIQ</td><td>Rua Elisa Pinto do Amaral n61, Bom Pastor, DivinopolisMG/CEP: 35500-141</td><td>BOM PASTOR</td><td>DIVINÓPOLIS</td><td>MG</td><td>35500-155</td><td>2a. A sex 08:00h às 17:00h</td></tr>
+            <tr data-uf="MS"><td>DOU</td><td>Avenida Joaquim Teixeira Alves, 2948, Letra A</td><td>CENTRO</td><td>DOURADOS</td><td>MS</td><td>79801-017</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SC"><td>EEA</td><td>Rua Lauro Araujo, 340</td><td>FREI ROGERIO</td><td>LAGES</td><td>SC</td><td>88508-443</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="RS"><td>ERM</td><td>Espirito Santo, 179</td><td>CENTRO</td><td>ERECHIM</td><td>RS</td><td>99709-296</td><td>2a. A sex 08:00h às 18h00</td></tr>
+            <tr data-uf="BA"><td>FEC</td><td>Rua Santo Agostinho, 10</td><td>SANTA MONICA</td><td>FEIRA DE SANTANA</td><td>BA</td><td>44077-690</td><td>2a A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="PE"><td>FEN</td><td>Vila do DPV</td><td>VILA DOS REMEDIOS</td><td>FERNANDO DE NORONHA</td><td>PE</td><td>53990-000</td><td>2a. A sab 10:00h às 17:00h</td></tr>
+            <tr data-uf="SC"><td>FLN01</td><td>RUA DOMINGOS JALMENO DA COSTA, 152</td><td>FAZENDA SANTO ΑΝΤΟΝΙΟ</td><td>SÃO JOSÉ</td><td>SC</td><td>88104-600</td><td>2a. A sex 09:00h às 18:45h</td></tr>
+            <tr data-uf="SC"><td>FLN</td><td>Avenida Deputado Diomicio Freitas, 3105 Sala 3</td><td>CARIANOS</td><td>FLORIANÓPOLIS</td><td>SC</td><td>88047-400</td><td>2a. A sex 09:00h às 19:00h; sáb. 09:00h às 12:00h.</td></tr>
+            <tr data-uf="SC"><td>FLNPV</td><td>RUA ANITA GARIBALDI, 79, LOJA 06</td><td>CENTRO</td><td>FLORIANÓPOLIS</td><td>SC</td><td>88010-500</td><td>2a. A sex 09:00h às 17:00h</td></tr>
+            <tr data-uf="CE"><td>FOR07</td><td>Av Oliveira Paiva, 424</td><td>CIDADE DOS FUNCIONARIOS</td><td>FORTALEZA</td><td>CE</td><td>60822-130</td><td>2a. A sex 08:00h às 18:00h Sab 08:00h às 12:00h</td></tr>
+            <tr data-uf="CE"><td>FOR08</td><td>Rua Tenente Benévolo, 1435</td><td>MEIRELES</td><td>FORTALEZA</td><td>CE</td><td>60160-041</td><td>2a. A sex 08:00h às 18:00h Sab 08:00h às 12:00h</td></tr>
+            <tr data-uf="CE"><td>FOR</td><td>Avenida Senador Carlos Jereissati, 3000-D40</td><td>SERRINHA</td><td>FORTALEZA</td><td>CE</td><td>60743-900</td><td>2a. À sab. 08:00h às 20:00h. Sab. 08:00h às 18:00h</td></tr>
+            <tr data-uf="CE"><td>FORPV</td><td>Av Oliveira Pal 428</td><td>CIDADE DOS FUNCIONARIOS</td><td>EUSEBIO</td><td>CE</td><td>60822-130</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>FRC02</td><td>Avenida Doutor Ismael Alonso Y Alonso, 3203</td><td>SAO JOSE</td><td>FRANCA</td><td>SP</td><td>14403-430</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="GO"><td>G44PV</td><td>R DOUTOR JOAO ALVES DE CASTRO, 144, QUADRA24 LOTE 6-E SALA 46 GOIAS CENT. MODAS</td><td>SET CRIMEIA OESTE</td><td>GOIÂNIA</td><td>GO</td><td>74563-170</td><td>2a. A sex 09:00h às 17:00h; sáb 09:00h às 12:00 h</td></tr>
+            <tr data-uf="RS"><td>GEL</td><td>Avenida Ven?ncio Aires, 1286</td><td>CENTRO</td><td>SANTO ANGELO</td><td>RS</td><td>98803-430</td><td>Segunda à sexta-feira das 08:00h às 18:00h. Sábado das 08:00h às 12:00h</td></tr>
+            <tr data-uf="MT"><td>GGB</td><td>Rua 05, Numero 584, Sala 03</td><td>CENTRO</td><td>AGUA BOA</td><td>MT</td><td>78635-000</td><td>2a à sex 07:30 às 17:30</td></tr>
+            <tr data-uf="PR"><td>GGJ</td><td>R RUI BARBOSA, 1401/LOJA</td><td>CENTRO</td><td>GUAÍRA</td><td>PR</td><td>85980-000</td><td>2a. A sex 08:00h às 18:00h; sáb. 09:00h às 12:00h.</td></tr>
+            <tr data-uf="RJ"><td>GIG</td><td>Ponta do Galeão - Avenida 20 de Janeiro, S/N - Ilha do Governador</td><td>GALEÃO</td><td>RIO DE JANEIRO</td><td>RJ</td><td>21941-520</td><td>Seg 08:00h às 23:00h Sab 09:00h às 16:00h</td></tr>
+            <tr data-uf="BA"><td>GNM02</td><td>Avenida Barão do Rio Branco, 2000</td><td>SÃO FRANCISCO</td><td>GUANAMBI</td><td>BA</td><td>46430-000</td><td>08:00 as 18:00 seg a sexta sábado 08:00 a 12:00</td></tr>
+            <tr data-uf="PR"><td>GPB</td><td>R BENJAMIN CONSTANT, 1819, SALA 4,DOS ESTADOS, GUARAPUAVA-PR/CEP 85.010-190</td><td>DOS ESTADOS</td><td>GUARAPUAVA</td><td>PR</td><td>85010-190</td><td>seg a sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="SP"><td>GRU03</td><td>R. Conego Valadao, 1017</td><td>GOPOUVA</td><td>GUARULHOS</td><td>SP</td><td>07040-000</td><td>2a. À sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>GRU04</td><td>Rua Franco da Rocha, 132</td><td>JARDIM MAIA</td><td>GUARULHOS</td><td>SP</td><td>07115-200</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="SP"><td>GRU</td><td>Rodovia Hélio Smidt, S/N- Carga Nacional Gru Airport</td><td>AEROPORTO</td><td>GUARULHOS</td><td>SP</td><td>07190-100</td><td>24 horas de segunda a domingo</td></tr>
+            <tr data-uf="ES"><td>GUI01</td><td>Rua Santo Antonio, 122</td><td>MUQUICABA</td><td>GUARAPARI</td><td>ES</td><td>29215-030</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="RS"><td>GVC01</td><td>R CORONEL SARMENTO,1672</td><td>CENTRO</td><td>GRAVATAÍ</td><td>RS</td><td>94010-030</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="MG"><td>GVR</td><td>Rua Afonso Pena, 3227-Loja 03</td><td>CENTRO</td><td>GOVERNADOR VALADARES</td><td>MG</td><td>35010-001</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="MG"><td>GXP01</td><td>Rua Vicente Frota, 40</td><td>ANGOLA</td><td>GUAXUPE</td><td>MG</td><td>37834-028</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="GO"><td>GYN01</td><td>Av 19, 1967</td><td>JARDIM AMERICA</td><td>GOIÂNIA</td><td>GO</td><td>74255-220</td><td>2a. A sex 08:00h às 18:30h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="GO"><td>GYN44</td><td>R 678, 165-LOJA 33 SHOP. MEGA MOD</td><td>SET NORTE FERROVIARIO</td><td>GOIÂNIA</td><td>GO</td><td>74063-320</td><td>2a. À sex 09:00h às 17:00h. Sab 09:00h às 13:00h</td></tr>
+            <tr data-uf="GO"><td>GYN</td><td>Av São Franscisco, 2053, Quadra 29 Lote 183</td><td>SANTA GENOVEVA</td><td>GOIÂNIA</td><td>GO</td><td>74670-010</td><td>2a. A sex 08:00h às 19:00h; sáb. 08:00h às 13:00 h</td></tr>
+            <tr data-uf="SP"><td>HLB01</td><td>Rua Primavera, 1296</td><td>CENTRO</td><td>HOLAMBRA</td><td>SP</td><td>13825-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>HLBPV</td><td>ROD SP 107 KM27</td><td>ZONA RURAL</td><td>SANTO ANTONIO DE POSSE</td><td>SP</td><td>13833-585</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>HTA01</td><td>R. Joaquim Pinto de Oliveira, 54-Lot. Remanso Campineiro</td><td>Lot. Remanso Campineiro</td><td>HORTOLANDIA</td><td>SP</td><td>13184-544</td><td>2a. A sex 09:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>IDT01</td><td>Avenida Ario Barnabe, 89</td><td>JARDIM MORADA DO SOL</td><td>INDAIATUBA</td><td>SP</td><td>13348-503</td><td>2a. A sex 08:30h às 18:00h.</td></tr>
+            <tr data-uf="PR"><td>IGU01</td><td>v Jose Maria de Brito, 1525</td><td>MONJOLO</td><td>FOZ DO IGUAÇU</td><td>PR</td><td>85864-320</td><td>2a. A sex 08:00h às 17:00h;</td></tr>
+            <tr data-uf="PR"><td>IGU</td><td>Avenida das Cataratas, s/n - Aeroporto Internacional de Foz do Iguaçu</td><td>VILA YOLANDA</td><td>FOZ DO IGUAÇU</td><td>PR</td><td>85853-900</td><td>2a. A sex 08:00h às 17:00h</td></tr>
+            <tr data-uf="RS"><td>UU02</td><td>Avenida Tiradentes, 178, Centro, ljul/RS CEP: 98700-000</td><td>CENTRO</td><td>IJUI</td><td>RS</td><td>98700-000</td><td>2º a 6º 08:00 as 18:00 Sab 08:00 as 12:00</td></tr>
+            <tr data-uf="MA"><td>IMP</td><td>Avenida Moacyr Sposito Ribeiro, n°8-LETRA A</td><td>AEROPORTO</td><td>IMPERATRIZ</td><td>MA</td><td>65913-415</td><td>2a. A sex 08:00h às 18:00; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="BA"><td>IOS</td><td>Rua Brigadeiro Eduardo Gomes, 70</td><td>PONTAL</td><td>ILHEUS</td><td>BA</td><td>45654-070</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="MG"><td>IPN</td><td>Avenida Altina Gonçalves, 20-Loja 01</td><td>IGUAÇU</td><td>IPATINGA</td><td>MG</td><td>35162-016</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="CE"><td>ITA01</td><td>AV DUQUE DE CAXIAS, 999</td><td>CENTRO</td><td>ITAPIPOCA</td><td>CE</td><td>62500-055</td><td>2a. A sex 08:00h às 18:00hs. Sáb 08:00 às 12:00h</td></tr>
+            <!-- Page 2 Data -->
+            <tr data-uf="PA"><td>ITB</td><td>Rua Bruno Juarez Correa, N 15, sala E</td><td>BELA VISTA</td><td>ITAITUBA</td><td>PA</td><td>68180-470</td><td>2a. A sex 08:00h às 17:30h</td></tr>
+            <tr data-uf="MG"><td>ITD01</td><td>Rua professor Francisco Santiago 324, Centro, Itaúna/MG</td><td>CENTRO</td><td>ITAUNA</td><td>MG</td><td>35680-058</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="SP"><td>ITG01</td><td>Rua Gumercindo Soares Hungria, 759 Itapetininga-SP</td><td>RETIRO SANTANA</td><td>ITAPETININGA</td><td>SP</td><td>18206-600</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="SC"><td>ITJO2</td><td>AVENIDA VEREADOR ABRAHAQ JOAO FRANCISCO, 415, SALA A</td><td>CENTRO</td><td>ITAJAÍ</td><td>SC</td><td>88302-101</td><td>2 A 6 FEIRA DAS 08H AS 18H</td></tr>
+            <tr data-uf="SP"><td>ITU02</td><td>Av Caetano Ruggeri, 2776</td><td>NOSSA SENHORA DA CANDELARIA</td><td>ITU</td><td>SP</td><td>13310-160</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SP"><td>JAC02</td><td>Av. Almeida Junior, 66</td><td>LOTEAMENTO VILLA BRANCA</td><td>JACAREI</td><td>SP</td><td>12301-572</td><td>2a. A sex 08:00h às 18:00h. Sab 08:00h às 12:00h</td></tr>
+            <tr data-uf="SP"><td>JAU02</td><td>Rui 281, Chacara Braz Miraglia, Jau, SP</td><td>CHACARA BRAZ MIRAGLIA</td><td>JAU</td><td>SP</td><td>17210-000</td><td>2a. A sex 08:00h às 19:00h</td></tr>
+            <tr data-uf="MG"><td>JDF</td><td>Avenida Presidente Juscelino Kubitschek, 6.911-loja 08</td><td>BENFICA</td><td>JUIZ DE FORA</td><td>MG</td><td>36092-060</td><td>2a. A sex 08:00h às 16:30h;</td></tr>
+            <tr data-uf="CE"><td>JDO</td><td>Avenida Coronel Humberto Bezerra, 180-A</td><td>LIMOEIRO</td><td>JUAZEIRO DO NORTE</td><td>CE</td><td>63030-030</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="CE"><td>JDOPV</td><td>R NELSON ALENCAR</td><td>CENTRO</td><td>CRATO</td><td>CE</td><td>63100-110</td><td>2a A sex 9:00h às 18:00h</td></tr>
+            <tr data-uf="MG"><td>JDR</td><td>Av Trinta E Um De Marc, 752, Colonia Do Marcal, Sao Joao Del Rei - Mg/Cep 36.302-016</td><td>COLONIA DO MARCAL</td><td>SAO JOAO DEL REI</td><td>MG</td><td>36302-016</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="PE"><td>JGS01</td><td>Av Bernardo Viera de Melo, 3273</td><td>PIEDADE</td><td>JABOATAO DOS GUARARAPES</td><td>PE</td><td>54410-010</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="MT"><td>JIA</td><td>Av. Dos Jambos, 868N, Sala 02, Lote 13, quadra 05, Eixo Comercial 1, Juina, MT-CEP: 78320-000</td><td>EIXO COMERCIALI</td><td>JUINA</td><td>MT</td><td>78320-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="CE"><td>JJD</td><td>Rua Expedito de Farias, 123 Sl 113-Shopping Jangada</td><td>CENTRO</td><td>ACARAU</td><td>CE</td><td>62580-000</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="SC"><td>JOI</td><td>Aeroporto de Joinville Lauro Carneiro de Loyola Avenida Santos Dumont, 9000</td><td>CUBATAO</td><td>JOINVILLE</td><td>SC</td><td>89226-435</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="PB"><td>JPA01</td><td>Avenida Presidente Epitácio Pessoa, 3161</td><td>MIRAMAR</td><td>JOÃO PESSOA</td><td>PB</td><td>58032-000</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="PB"><td>JPA03</td><td>Rua Flavio Ribeiro Coutinho, 115</td><td>MANAIRA</td><td>JOÃO PESSOA</td><td>PB</td><td>58037-000</td><td>2a. A sex 09:00h às 19:00h</td></tr>
+            <tr data-uf="PB"><td>JPA04</td><td>R BANCARIO SERGIO GUERRA, 248</td><td>ANATOLIA</td><td>JOÃO PESSOA</td><td>PB</td><td>58052-000</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="PB"><td>JPA</td><td>Av. Marechael Rondon, SN</td><td>JARDIM AEROPORTO</td><td>JOÃO PESSOA</td><td>PB</td><td>58308-901</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="PA"><td>JPE</td><td>Av do Contorno, 200</td><td>URAIM</td><td>PARAGOMINAS</td><td>PA</td><td>68625-245</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="PB"><td>JPO</td><td>ROD BR-230, SN, KM 336</td><td>JARDIM MAGNOLIA</td><td>PATOS</td><td>PB</td><td>58705-555</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="RO"><td>JPR</td><td>Rua Pedro Teixeira, 1404</td><td>CENTRO</td><td>JI-PARANÁ</td><td>RO</td><td>76900-062</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="SP"><td>JTC</td><td>Rua Maestro Oscar Mendes, 1-260</td><td>NOVO JARDIM PAGANI</td><td>BAURU</td><td>SP</td><td>17024-270</td><td>08:00 as 20:00</td></tr>
+            <tr data-uf="GO"><td>JT101</td><td>José Geda, 108 -GO/CEP 75800-048</td><td>CENTRO</td><td>JATAÍ</td><td>GO</td><td>75800-048</td><td>2a. A sex 09:00h às 17:00hs.</td></tr>
+            <tr data-uf="SP"><td>JTN01</td><td>AV AVENIDA HARRY FORSSEL, 1330, LOJA 03</td><td>JD SABAUNA</td><td>ITANHAÉM</td><td>SP</td><td>11740-000</td><td>2a. A sex 09:00h às 17:30hs.</td></tr>
+            <tr data-uf="BA"><td>JUU01</td><td>R DA ESTACAO,40</td><td>PIRANGA</td><td>JUAZEIRO</td><td>BA</td><td>48900-160</td><td>2a. A sex 08:00h as 18:00h; sáb. 08:00h as 12:00h.</td></tr>
+            <tr data-uf="PR"><td>LDB</td><td>Rua Tenente Joao Mauricio Medeiros, 300</td><td>AEROPORTO</td><td>LONDRINA</td><td>PR</td><td>86039-100</td><td>2a. A sex 08:00h às 19:00h; sáb. 08:00 às 12:00h</td></tr>
+            <tr data-uf="BA"><td>LFR02</td><td>Av Santos Dumont, 1467</td><td>CENTRO</td><td>LAURO DE FREITAS</td><td>BA</td><td>42702-400</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="ES"><td>LHN</td><td>Rua Capitão Jose Maria, 1613</td><td>CENTRO</td><td>LINHARES</td><td>ES</td><td>29900-172</td><td>2a. A sex 09:00h às 18:00h</td></tr>
+            <tr data-uf="MT"><td>LVR01</td><td>AV PARANA, 866 E, SALA 01</td><td>PIONEIRO</td><td>LUCAS DO RIO VERDE</td><td>MT</td><td>78455-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="PA"><td>MAB</td><td>Av. Transamazónica, 2449</td><td>CIDADE NOVA</td><td>MARABÁ</td><td>PA</td><td>68501-660</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="AM"><td>MA001</td><td>Rua Campo Bravos, 480</td><td>REDENÇAO</td><td>MANAUS</td><td>AM</td><td>69047-000</td><td>2a. A sex 08:00h às 17:00h</td></tr>
+            <tr data-uf="AM"><td>MA003</td><td>AV 7 DE MAIO, 32, PC 12624/97 A 99, SANTA ETELVINA, MANAUS-AM/CEP: 69.059-140</td><td>SANTA ETELVINA</td><td>MANAUS</td><td>AM</td><td>69059-140</td><td>2a. A sex 08:00h às 17:00h</td></tr>
+            <tr data-uf="AM"><td>MAO</td><td>Av. Cel Cyrillo Neves 1239 galpão G1</td><td>BAIRRO SANTO AGOSTINHO</td><td>MANAUS</td><td>AM</td><td>69036-605</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="AP"><td>MCP</td><td>Rua Hidelmar, 567</td><td>JESUS DE NAZARE</td><td>MACAPÁ</td><td>AP</td><td>68908-119</td><td>2a. A sex 08:00h às 17:00h</td></tr>
+            <tr data-uf="AL"><td>MCZ01</td><td>RUA PROFESSORA MARIA ESTHER DA COSTA BARROS, 183, QUADRA 23</td><td>JATIUCA</td><td>MACEIÓ</td><td>AL</td><td>57036-840</td><td>2a. A sex 09:00h às 19:00h; sáb. 09:00h às 13:00h</td></tr>
+            <tr data-uf="AL"><td>MCZ</td><td>Rodovia BR 104-Km 91-Galpão 14 - Rio Largo</td><td>TABULEIRO PINTO</td><td>MACEIÓ</td><td>AL</td><td>57100-000</td><td>2a. A sex 08:00h às 18:00hs; sáb. 8:00 às 12:00h.</td></tr>
+            <tr data-uf="RJ"><td>MEA</td><td>R TEIXEIRA DE GOUVEA, 1727-LOJA 11 E 12</td><td>CAJUEIROS</td><td>MACAE</td><td>RJ</td><td>27916-000</td><td>seg a sex 08:00h as 17:00h. Sáb 08:00h às 12:00hrs</td></tr>
+            <tr data-uf="PA"><td>MEU</td><td>Rua 100, S/N</td><td>CENTRO</td><td>ALMEIRIM</td><td>PA</td><td>68330-000</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="PR"><td>MGF</td><td>Aeroporto Internacional de Maringá-PR-Av. Doutor Vladimir Babkov, s/n</td><td>PARQUE INDUSTRIAL MARIO BULHOES</td><td>MARINGÁ</td><td>PR</td><td>87065-665</td><td>2ª a 6ª das 08:00h às 19:00h. Sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="SP"><td>MII</td><td>Avenida República, 4595</td><td>PALMITAL</td><td>MARÍLIA</td><td>SP</td><td>17511-000</td><td>Seg a sexta das 8 às 19</td></tr>
+            <tr data-uf="RS"><td>MMA01</td><td>R CARAMURU, 128</td><td>PROGRESSO</td><td>MARAU</td><td>RS</td><td>99150-000</td><td>2a. A sex 08:00h às 18h00</td></tr>
+            <tr data-uf="SP"><td>MMM01</td><td>Rua Rio de Janeiro, 774</td><td>SAUDE</td><td>MOGI MIRIM</td><td>SP</td><td>13800-470</td><td>2a. A sex 08:00h às 17:00h;</td></tr>
+            <tr data-uf="SP"><td>MMMPV</td><td>AV CLARA LAZE BUENO, 33</td><td>VILA LEILA</td><td>MOGI GUACU</td><td>SP</td><td>13847-192</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="MG"><td>MOC</td><td>Avenida Governador Magalhães Pinto, 2456-Esplanada</td><td>JARAGUA</td><td>MONTES CLAROS</td><td>MG</td><td>39401-458</td><td>2a. A sex 08:00h às 18:00h; sáb das 08h00 às 12h00</td></tr>
+            <tr data-uf="CE"><td>MOW01</td><td>Pátio Jardins Da Serra - Av. Padre José Holanda do Vale, 570 - Luzardo Viana, Maracanaú CE</td><td>LUZARDO VIAΝΑ</td><td>MARACANAÚ</td><td>CE</td><td>61910-000</td><td>2a. A sex 08:00h às 18:00h Sab 08:00h às 12:00h</td></tr>
+            <tr data-uf="RN"><td>MVF</td><td>Avenida João da Escossia, 1412</td><td>NOVA BETÂNIA</td><td>MOSSORÓ</td><td>RN</td><td>59607-330</td><td>2a. A sex 08:00h às 18:00h; sáb. das 08:00h às 12:00h</td></tr>
+            <tr data-uf="RN"><td>NAT01</td><td>Avenida Afonso Pena, 672</td><td>TIROL</td><td>NATAL</td><td>RN</td><td>59020-100</td><td>2a. A sex 08:00h ás 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="RN"><td>NAT02</td><td>Aldo de Melo 1675-Ponta Negra</td><td>CAPIM MACIO</td><td>NATAL</td><td>RN</td><td>59082-030</td><td>2a. A sex 09:00h às 18:00h.</td></tr>
+            <tr data-uf="RN"><td>NAT</td><td>Avenida Rui Pereira dos Santos, 3100-São Gonçalo do Amarante</td><td>AEROPORTO</td><td>NATAL</td><td>RN</td><td>59290-000</td><td>2a. A sex 09:00h às 18:00h</td></tr>
+            <tr data-uf="RJ"><td>NITO2</td><td>Alameda São Boaventura, 384-Fonseca, Niterói</td><td>FONSECA</td><td>NITERÓI</td><td>RJ</td><td>24130-005</td><td>Seg à Sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="MG"><td>NLM01</td><td>Av. Toronto, 508-Loja 01 A-Jardim Canada, Nova Lima - MG</td><td>JARDIM CANADA</td><td>NOVA LIMA</td><td>MG</td><td>34007-658</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="RN"><td>NNS01</td><td>Rua Ananias Monteiro Mariz, 28</td><td>CENTRO</td><td>SERRA NEGRA DO NORTE</td><td>RN</td><td>59318-000</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="PI"><td>NSR</td><td>Rua Doutor Humberto Paixão, 1253, Bairro primavera, São Raimundo Nonato/PI,</td><td>PRIMAVERA</td><td>SÃO RAIMUNDO NONATO</td><td>PI</td><td>64770-000</td><td>Segunda à sexta: 08:00 as 17:30 e Sab 08:30hrs á 11:30hrs</td></tr>
+            <tr data-uf="SC"><td>NVT</td><td>Rua Osmar Gaya, 483</td><td>CENTRO</td><td>NAVEGANTES</td><td>SC</td><td>88370-208</td><td>2a. A sex 8:00h às 18:00h</td></tr>
+            <tr data-uf="MG"><td>NVV01</td><td>Rua Pitangui, 16</td><td>MARISA</td><td>NOVA SERRANA</td><td>MG</td><td>35521-310</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="RO"><td>OAL</td><td>Av Amazonas n 2825</td><td>CENTRO</td><td>CACOAL</td><td>RO</td><td>76963-792</td><td>2a. A sex 08:00h às 17:30h; Sáb 08:00h às 12:00h</td></tr>
+            <tr data-uf="PE"><td>OLL01</td><td>Av Pres Getulio Vargas, 290, LJ 04</td><td>BAIRRO NOVO</td><td>OLINDA</td><td>PE</td><td>53030-010</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="PA"><td>OPP</td><td>Rua Ezequiel Lisboa N° 155, Camarā, Salinópois/Pará, Cep. 68721-000</td><td>CAMARA</td><td>SALINOPOLIS</td><td>PA</td><td>68721-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="MT"><td>OPS</td><td>Rua das Avenças, 988</td><td>SETOR COMERCIAL</td><td>SINOP</td><td>MT</td><td>78550-070</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="PR"><td>PCW01</td><td>Avenida Camilo Di Lellis, 697, Centro, Pinhais</td><td>CENTRO</td><td>PINHAIS</td><td>PR</td><td>83323-000</td><td>2a. A sex 08:30h às 18:30h; sáb. 09:00h às 12:00h.</td></tr>
+            <tr data-uf="MG"><td>PDM01</td><td>Av. Argentina, 488 - São José, Para de Minas /MG</td><td>SÃO JOSÉ</td><td>PARÁ DE MINAS</td><td>MG</td><td>35660-110</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="RS"><td>PET</td><td>Rua Andrade Neves, 3462</td><td>CENTRO</td><td>PELOTAS</td><td>RS</td><td>96020-080</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="RS"><td>PFB</td><td>Rua Capitão Eleoterio, 121</td><td>CENTRO</td><td>PASSO FUNDO</td><td>RS</td><td>99010-060</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="RS"><td>PFB03</td><td>R. Silva Jardim, 328-Centro, Passo Fundo - RS, 99010-240</td><td>CENTRO</td><td>PASSO FUNDO</td><td>RS</td><td>99010-240</td><td>2a. A sex 08:30 às 18:30; sáb. 08:30 às 12:00h.</td></tr>
+            <tr data-uf="SP"><td>PGG01</td><td>A SAO BERNARDO, 41, CASA 03</td><td>BOQUEIRAO</td><td>PRAIA GRANDE</td><td>SP</td><td>11.701-240</td><td>2a. A sex 08:00h às 18:00h. Sáb 9:00h às 13:00.</td></tr>
+            <tr data-uf="PR"><td>PGZ</td><td>Av Visconde de Maua, 276, Sala 01</td><td>OFICINAS</td><td>PONTA GROSSA</td><td>PR</td><td>84040-290</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="PI"><td>PHB</td><td>Av. São Sebastião, 1213, Loja 4 Nossa Sra. de Fátima, Parnaíba - PI</td><td>PARNAÍBA</td><td>PARNAÍBA</td><td>PI</td><td>64202-202</td><td>2a. A sex 08:00h às 18:00h / Sab das 08:00 ás 12:00h</td></tr>
+            <tr data-uf="MT"><td>PIL01</td><td>Av. Brasil, N?91, Parque Castelandia II, Primavera do Leste/MT CEP: 78850-000</td><td>PARQUE CASTELANDIA 2</td><td>PRIMAVERA DO LESTE</td><td>MT</td><td>78850-000</td><td>2a à sex 07:30 às 17:30</td></tr>
+            <tr data-uf="MG"><td>PLU</td><td>Rua Lider, 122</td><td>PAMPULHA</td><td>BELO HORIZONTE</td><td>MG</td><td>31270-480</td><td>2a. A sex 08:00h às 22:00h;</td></tr>
+            <tr data-uf="MS"><td>PMG</td><td>Rua Epitacio Pessoa, 810</td><td>BAIRRO DA GRANJA</td><td>PONTA PORA</td><td>MS</td><td>79905-334</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="TO"><td>PMW</td><td>AVENIDA JOAQUIM TEOTONIO SEGURADO, S/N</td><td>PLANO DIRETOR EXPANSAO SUL</td><td>PALMAS</td><td>TO</td><td>77061-900</td><td>2a. A sex 08:00h às 18:00h; sáb. 8:00h às 12:00h.</td></tr>
+            <tr data-uf="PR"><td>PNG01</td><td>R PRESCILIANO CORREA, 90</td><td>CENTRO HISTÓRICO</td><td>PARANAGUÁ</td><td>PR</td><td>83203-230</td><td>2a. A sex 09:00h às 18:00h;</td></tr>
+            <tr data-uf="PE"><td>PNZ</td><td>Avenida Sete de Setembro, 90</td><td>AREIA BRANCA</td><td>PETROLINA</td><td>PE</td><td>56328-680</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="RS"><td>POA01</td><td>Rua Dezoito de Novembro, 53</td><td>NAVEGANTES</td><td>PORTO ALEGRE</td><td>RS</td><td>90240-040</td><td>2a A sex 9:00h às 18:00h</td></tr>
+            <tr data-uf="RS"><td>POA03</td><td>Av Assis Brasil, 6186-Loja 6</td><td>SARANDI</td><td>PORTO ALEGRE</td><td>RS</td><td>91110-390</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="RS"><td>POA04</td><td>Av Protasio Alves, 3908</td><td>TRES FIGUEIRAS</td><td>PORTO ALEGRE</td><td>RS</td><td>91310-000</td><td>2a A sex 9:00h às 18:00h</td></tr>
+            <tr data-uf="RS"><td>POA</td><td>Avenida Severo Dulius, 90.010 portão 06</td><td>SAO JOAQ</td><td>PORTO ALEGRE</td><td>RS</td><td>90200-310</td><td>24 horas</td></tr>
+            <tr data-uf="MG"><td>PO001</td><td>Avenida Antonio Emidio de Rezende, 350</td><td>COUNTRY CLUB</td><td>POÇOS DE CALDAS</td><td>MG</td><td>37704-283</td><td>2a. A sex 09:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>PPB</td><td>Av. Quatorze de Setembro, 442</td><td>VILA INDUSTRIAL</td><td>PRESIDENTE PRUDENTE</td><td>SP</td><td>19013-380</td><td>2a. A sex 08:00h às 18:00h; Sáb. 09:00h às 13:00h</td></tr>
+            <tr data-uf="MG"><td>PSW01</td><td>Av. Arlindo Figueiredo N126 Centro Passos/MG CEP 37902-030</td><td>SAO FRANCISCO</td><td>PASSOS</td><td>MG</td><td>37.902-026</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="RO"><td>PVH01</td><td>Av Sete de Setembro, 1741-Sala 01-Setor 04-Quadra 18</td><td>NOSSA SENHORA DAS GRAÇAS</td><td>PORTO VELHO</td><td>RO</td><td>76804-124</td><td>2a. A sex 08:00h às 17:30h;</td></tr>
+            <tr data-uf="RO"><td>PVH02</td><td>Carlos Gomes, 2007, LOTE ASALGADO FILHO</td><td>SÃO CRISTOVÃO</td><td>PORTO VELHO</td><td>RO</td><td>76804-037</td><td>Seg a sex 08h as 18h sab 08h as 12 h</td></tr>
+            <tr data-uf="RO"><td>PVH</td><td>Av Governador João Teixeira, s/n Terminal de Cargas - Galpão Infraero</td><td>AEROPORTO</td><td>PORTO VELHO</td><td>RO</td><td>76803-250</td><td>2a. A sex 08:00h às 18:00h; sáb. 8:00h às 12:00h.</td></tr>
+            <tr data-uf="AM"><td>QAR01</td><td>Av 7 de Setembro, 1308</td><td>ITACOATIARA</td><td>ITACOATIARA</td><td>AM</td><td>69101-068</td><td>2a. A sex 08:00h às 18:00h; sab 08:00h às 12:00h</td></tr>
+            <tr data-uf="MG"><td>QBK01</td><td>AV BANDEIRANTES, 1045</td><td>FILADELFIA</td><td>BETIM</td><td>MG</td><td>32670-248</td><td>2a. A sex 09:00h às 18:00hs.</td></tr>
+            <tr data-uf="RS"><td>QBR01</td><td>RIVO TRAMONTINA, 440, SALA 04</td><td>AURORA</td><td>CARLOS BARBOSA</td><td>RS</td><td>95.185-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="BA"><td>QBU01</td><td>AV ILHEUS, 277</td><td>CENTRO</td><td>ITABUNA</td><td>BA</td><td>45600-045</td><td>2a. A sex 09:00h às 17:00hs.</td></tr>
+            <tr data-uf="CE"><td>QBX01</td><td>Rua Desembargador Moreira da Rocha, 463</td><td>CENTRO</td><td>SOBRAL</td><td>CE</td><td>62010-140</td><td>2a. A sex 08:00h às 18:00h; sáb. 8:00h às 12:00h.</td></tr>
+            <tr data-uf="SP"><td>QCA01</td><td>Av Antonio Roberto, 52</td><td>CENTRO</td><td>CARAPICUÍBA</td><td>SP</td><td>06315-270</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="BA"><td>QCC01</td><td>Rua Contorno de Centro Administrativo, 02-Complemente: 1 A</td><td>CENTRO</td><td>CAMAÇARI</td><td>BA</td><td>42800-610</td><td>2a. À sex 08:00h às 17:00h.</td></tr>
+            <tr data-uf="RS"><td>QCD01</td><td>Av. dos Municípios, 4071 Loja 01</td><td>25 DE JULHO</td><td>CAMPO BOM</td><td>RS</td><td>93700-000</td><td>2a. A sex 08:30h às 18:30h</td></tr>
+            <tr data-uf="SP"><td>QCJ01</td><td>R JOÃO PASSOS, 1294</td><td>CENTRO</td><td>BOTUCATU</td><td>SP</td><td>18600-040</td><td>2a. A sex 09:00h às 19:00h;</td></tr>
+            <tr data-uf="RN"><td>QCN01</td><td>Av Cel Jose Bezerra, 42</td><td>ZONA DE EXPANSAO</td><td>PARNAMIRIM</td><td>RN</td><td>59380-000</td><td>2a. A sex 09:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="SP"><td>QCX01</td><td>Avenida Senador Roberto Simonsen, 176</td><td>CENTRO</td><td>SÃO CAETANO DO SUL</td><td>SP</td><td>09530-400</td><td>2a. À sex 09:00h às 18:00h.</td></tr>
+            <tr data-uf="RJ"><td>QDQ01</td><td>Av. Governador Leonel de Moura Brizola, 999-Centro, Duque de Caxias - RJ, 25010-971-Ed. Comercial Sta Maria da Feira,</td><td>CENTRO</td><td>DUQUE DE CAXIAS</td><td>RJ</td><td>25010-971</td><td>Seg à Sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>QDV01</td><td>Avenida Nove de Julho, 1995- Jardim Bela Vista</td><td>ANHANGABAU</td><td>JUNDIAÍ</td><td>SP</td><td>13208-056</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>QDW03</td><td>Rua Castro Alves, 350 - Conceição, Diadema-</td><td>CONCEICAO</td><td>DIADEMA</td><td>SP</td><td>09911-430</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="MG"><td>QET02</td><td>AVENIDA DELEGADO WALDEMAR GOMES PINTO, 271</td><td>DA PONTE NOVA</td><td>EXTREMA</td><td>MG</td><td>37640-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>QEV01</td><td>R PROFESSOR DIMARAES ANTONIO SANDEI, 380, QUADRA10 LOTE 2-D</td><td>CIDADE DA SAUDE</td><td>ITAPEVI</td><td>SP</td><td>06693-130</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SP"><td>QGB01</td><td>Avenida Eduardo Peixoto,880</td><td>JD NOVA EUROPA</td><td>LIMEIRA</td><td>SP</td><td>13482-000</td><td>08h30 as 17h30</td></tr>
+            <tr data-uf="RS"><td>QGF01</td><td>Rua Osvaldo Aranha, 1251</td><td>CENTRO</td><td>MONTENEGRO</td><td>RS</td><td>95780-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="PE"><td>QGP</td><td>Av. Julio Brasileiro, N1421, Heliópolis, Garanhus/PE CEP:55297-030</td><td>HELIOPOLIS</td><td>GARANHUNS</td><td>PE</td><td>55.297-010</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="SP"><td>QHB01</td><td>Avenida Dois Córregos, 2599 loja 60</td><td>DOIS CORREGOS</td><td>PIRACICABA</td><td>SP</td><td>13420-860</td><td>2a. A sex 09:00h às 17:00h;</td></tr>
+            <tr data-uf="SP"><td>QHBPV</td><td>RUA UM, 60, CONVIVIO GREEN VILLAGE</td><td>DOIS CORREGOS</td><td>PIRACICABA</td><td>SP</td><td>13420-860</td><td>2a. A sex 09:00h às 17:00h;</td></tr>
+            <tr data-uf="MG"><td>QHG01</td><td>Rua Coronel Antonio Andrade, 1058; Loja 03</td><td>SAO GERALDO.</td><td>SETE LAGOAS</td><td>MG</td><td>35700-193</td><td>2a. A sex 9:00h às 18:30h;</td></tr>
+            <tr data-uf="SP"><td>QHP01</td><td>Avenida Marechal Arthur da Costa e Silva nº 2.136</td><td>VILA PAULISTA</td><td>TAUBATÉ</td><td>SP</td><td>12030-810</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="RS"><td>QHV01</td><td>RUA VINTE E CINCO DE JULHO, 1151, LOJA 02</td><td>RIO BRANCO</td><td>NOVO HAMBURGO</td><td>RS</td><td>93310-251</td><td>2a. A sex 09:00h às 18:30h.</td></tr>
+            <tr data-uf="SP"><td>QIQ03</td><td>Rua 14, 2256</td><td>JARDIM SÃO PAULO</td><td>RIO CLARO</td><td>SP</td><td>13500-270</td><td>2a. À sex 08:00h às 18:00</td></tr>
+            <tr data-uf="MG"><td>QIU01</td><td>Rua Antonio Fontinele Ribeiro N129, Centro,&#8194; Bocaiuva/MG CEP: 39390-000</td><td>CENTRO</td><td>BOCAJUVA</td><td>MG</td><td>39390-000</td><td>2a. A sex 9:00h às 18:30h;</td></tr>
+            <tr data-uf="SC"><td>QJA03</td><td>Rua José Theodoro Ribeiro, 315</td><td>ILHA DA FIGUEIRA</td><td>JARAGUÁ DO SUL</td><td>SC</td><td>89258-000</td><td>2a. A sex 09:00h às 18:00h.</td></tr>
+            <tr data-uf="SP"><td>QJB01</td><td>Rua Piratininga, 1340</td><td>CENTRO</td><td>SAO JOAQUIM DA BARRA</td><td>SP</td><td>14600-000</td><td>2a. A sex 08:00h às 18:00hs</td></tr>
+            <tr data-uf="SP"><td>QJC01</td><td>Av. Ten. Marques, 5464</td><td>PORTAL DOS IPÊS</td><td>CAJAMAR</td><td>SP</td><td>05289-000</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SP"><td>QJD01</td><td>Av Zelia de Lima Rosa, 799-Loja 4</td><td>PORTAL VILLE AZALEIA</td><td>BOITUVA</td><td>SP</td><td>18552-320</td><td>2a. A sex 09:00h às 17:00hs.</td></tr>
+            <tr data-uf="SP"><td>QJF01</td><td>Rua Nove de Julho, 660</td><td>JARDIM SANTA HELENA</td><td>SUZANO</td><td>SP</td><td>08674-230</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SP"><td>QJG01</td><td>Rua Oito, 30</td><td>RESIDENCIAL PARQUE DOS IPES</td><td>JAGUARIUNA</td><td>SP</td><td>13912-426</td><td>2a. A sex 08:30h às 18:00h.</td></tr>
+            <tr data-uf="SC"><td>QJH 01</td><td>Al Aritiliano Ramos, 1700</td><td>JARDIM AMERICA</td><td>RIO DO SUL</td><td>SC</td><td>89160-240</td><td>2a À sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SC"><td>QJM01</td><td>Rua Sete de Setembro, 157</td><td>SANTA RITA</td><td>BRUSQUE</td><td>SC</td><td>88352-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="RS"><td>QKA02</td><td>Av. Gen. Flores da Cunha, 2586 Loja 03</td><td>PARQUE BRASILIA</td><td>CACHOEIRINHA</td><td>RS</td><td>94950-000</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="RN"><td>QKK01</td><td>Av Coronel Martiniano.1785</td><td>PENEDO</td><td>CAICO</td><td>RN</td><td>59300-000</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+             <!-- Page 3 Data -->
+            <tr data-uf="RS"><td>QLB03</td><td>Rua Omar Moreira Libio, 94</td><td>ALDEIA</td><td>Lajeado</td><td>RS</td><td>95913-166</td><td>2ª a Sex 09:00 às 18:00</td></tr>
+            <tr data-uf="RS"><td>QLL01</td><td>Rua José Bonifácio, 100-sala 106</td><td>CENTRO</td><td>SÃO LEOPOLDO</td><td>RS</td><td>93010-180</td><td>2a. A sex 08:30h às 18:30h;</td></tr>
+            <tr data-uf="SP"><td>QLY01</td><td>R PRUDENTE DE MORAES, 516</td><td>CENTRO</td><td>Matão</td><td>SP</td><td>15990-010</td><td>2a. A sex 09:00h às 17:00hs.</td></tr>
+            <tr data-uf="SP"><td>QMA02</td><td>Av Dom Jose Gaspar, 1572</td><td>MATRIZ</td><td>MAUA</td><td>SP</td><td>09370-670</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SP"><td>QM102</td><td>Avenida Mariano de Souza Mello, 283 - Mogilar</td><td>CENTRO</td><td>MOGI DAS CRUZES</td><td>SP</td><td>08773-330</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="GO"><td>QM001</td><td>Praca Rui Barbosa N86, Qd. 05 Lt. 0-loja 01, Centro, Formosa/GO CEP: 73801-220</td><td>CENTRO</td><td>FORMOSA</td><td>GO</td><td>73801-220</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="RS"><td>QNS02</td><td>Av. Getúlio Vargas, 2575</td><td>NITEROI</td><td>CANOAS</td><td>RS</td><td>92120-124</td><td>2a. A sex 08:30h às 18:30h;</td></tr>
+            <tr data-uf="RJ"><td>QNV01</td><td>RUA CORONEL FRANCISCO SOARES, 687, LOJA B LOTE 31</td><td>CENTRO</td><td>NOVA IGUACU</td><td>RJ</td><td>26216-032</td><td>2a. A sex 09:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>QOC03</td><td>Av. dos Autonomistas, 177</td><td>CENTRO</td><td>OSASCO</td><td>SP</td><td>06020-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>Q0103</td><td>Rua Jayme Cunha, 50</td><td>JARDIM PASSARGADAI</td><td>COTIA</td><td>SP</td><td>06712-103</td><td>SEG A SEX DAS 09:00 AS 18:00 HRS</td></tr>
+            <tr data-uf="SP"><td>QPA02</td><td>Rua Santa Cruz, 17</td><td>NOVA PAULINIA</td><td>PAULINIA</td><td>SP</td><td>13140-291</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="RS"><td>QPB01</td><td>Av Presidente Kennedy, 3340</td><td>ARCO IRIS</td><td>PANAMBI</td><td>RS</td><td>98280-000</td><td>2a. A sex 08:00h às 18:00h; sáb. 09:00h às 12:00h.</td></tr>
+            <tr data-uf="RJ"><td>QPT01</td><td>Rua Dr. Paulo Hervé, 1436</td><td>BIRGEN</td><td>PETRÓPOLIS</td><td>RJ</td><td>25665-510</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>QPV01</td><td>Avenida Brasil, 1782-Sala 02</td><td>CENTRO</td><td>ITUPEVA</td><td>SP</td><td>13295-000</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="MG"><td>QPY01</td><td>Av. Angelo Calafiori, 81-Centro, São Sebastião do Paraíso-MG, 37950-000</td><td>CENTRO</td><td>SÃO SEBASTIÃO DO PARAÍSO</td><td>MG</td><td>37950-000</td><td>2a. A sex 9:00h às 18:30h;</td></tr>
+            <tr data-uf="MG"><td>QRG01</td><td>R JOAQUIM MODESTO</td><td>CENTRO</td><td>ARAGUARI</td><td>MG</td><td>38440-144</td><td>2a. A sex 08:30h às 19:00hs.</td></tr>
+            <tr data-uf="PA"><td>QRV01</td><td>ROD BR 316 KM 13, COND JARDIM III</td><td>DECOUVILLE</td><td>MARITUBA</td><td>PA</td><td>67205-150</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="MG"><td>QSA01</td><td>Av Thales Chagas, 272</td><td>NAZIA I</td><td>VESPASIANO</td><td>MG</td><td>33200-442</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>QSB02</td><td>Rua Principe Humberto, 510, Loja 514</td><td>CENTRO</td><td>SÃO BERNARDO DO CAMPO</td><td>SP</td><td>09725-200</td><td>2a. A sex 08:30h às 17:00h;</td></tr>
+            <tr data-uf="SP"><td>QSC01</td><td>Rua Monteiro Lobato, 2000</td><td>JARDIM BRASIL</td><td>SÃO CARLOS</td><td>SP</td><td>13569-290</td><td>2a. A sex 09:00h às 17:00h;</td></tr>
+            <tr data-uf="SP"><td>QSE02</td><td>Rua Itobe, 68</td><td>VILA ALPINA</td><td>SANTO ANDRÉ</td><td>SP</td><td>09090-240</td><td>Segunda a sexta 09:00 às 18:00</td></tr>
+            <tr data-uf="SP"><td>QSE03</td><td>Rua Coronel Francisco amaro, 539 centro Santo André SP - CEP 09020-250</td><td>CENTRO</td><td>SANTO ANDRÉ</td><td>SP</td><td>09020-250</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="GO"><td>QSW01</td><td>Avenida Alfredo Nasser Quadra 20, LT 05 loja 02 Setor Mandu II Luziania GO CEP 72814510</td><td>SETOR MANDU II</td><td>LUZIANIA</td><td>GO</td><td>72814-510</td><td>2a. A sex 09:00h às 18:00hs.</td></tr>
+            <tr data-uf="PB"><td>QTA01</td><td>RUA SÃO JOÃO, 93</td><td>CENTRO</td><td>SANTA RITA</td><td>PB</td><td>58300-150</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="SC"><td>QTB01</td><td>Avenida Patrício Lima, 863</td><td>HUMAITA</td><td>TUBARÃO</td><td>SC</td><td>88704-410</td><td>2a. A sex 09:00h às 17:00h;</td></tr>
+            <tr data-uf="AP"><td>QTN01</td><td>Rua Pedro Salvador Diniz, 09</td><td>CENTRAL</td><td>SANTANA</td><td>AP</td><td>68925-180</td><td>2a A sex 8:00h às 17:00h</td></tr>
+            <tr data-uf="GO"><td>QTR01</td><td>Av Manoel Monteiro N1027 St Central Trindade/GO CEP 75380000</td><td>VILA PADRE ETERNO</td><td>TRINDADE</td><td>GO</td><td>75.388-238</td><td>2a. À sex 09:00h às 17:00h. Sab 09:00h às 13:00h</td></tr>
+            <tr data-uf="CE"><td>QUC01</td><td>Rua Presidente Getulio Vargas, 10 - Loja 30</td><td>CENTRO</td><td>CAUCAIA</td><td>CE</td><td>61600-110</td><td>2a A sex 8:00h às 17:00h</td></tr>
+            <tr data-uf="ES"><td>QVH 02</td><td>Av Professora Francelina Carneiro Setubal, 5</td><td>ITAPUA</td><td>VILA VELHA</td><td>ES</td><td>29101-641</td><td>2a A 6a 9h as 18h</td></tr>
+            <tr data-uf="SP"><td>QWJ01</td><td>Rua das Nogueiras, 38</td><td>JARDIM GLORIA</td><td>AMERICANA</td><td>SP</td><td>13468-200</td><td>2ª a 6ª das 8:00 às 17:00 (atendimento ao público)</td></tr>
+            <tr data-uf="CE"><td>QXDF1</td><td>Rua Francisco Eneias de Lima N1761 Centro Quixada CEP 63900231</td><td>CENTRO</td><td>QUIXADA</td><td>CE</td><td>63.900-231</td><td>2a A sex 9:00h às 18:00h</td></tr>
+            <tr data-uf="PA"><td>QXM01</td><td>Av Barao de Capanema N812 Inussun Capanema/PA CEP:06700-005</td><td>CENTRO</td><td>CAPANEMA</td><td>PA</td><td>06700-005</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="SP"><td>RA001</td><td>Rua Conde Afonso Celso 1630</td><td>JARDIM SUMARÉ</td><td>RIBEIRÃO PRETO</td><td>SP</td><td>14025-040</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>RA003</td><td>Rua Laguna, 654</td><td>PARQUE INDUSTRIAL CORONEL QUITO JUNQUEIRA</td><td>RIBEIRÃO PRETO</td><td>SP</td><td>14090-346</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>RAO</td><td>Avenida Thomas Alberto Whately S/N</td><td>JARDIM PAULISTANO</td><td>RIBEIRÃO PRETO</td><td>SP</td><td>14075-390</td><td>2a. A sex 08:30h às 18:30h; Sab das 09:00h às 12:00h</td></tr>
+            <tr data-uf="AC"><td>RBR</td><td>RUA MANOEL RODRIGUES DE SOUZA, 67, SALA 04</td><td>DOM GIOCONDO</td><td>RIO BRANCO</td><td>AC</td><td>69900-282</td><td>2a. A sex 09:00h às 17:00h</td></tr>
+            <tr data-uf="PE"><td>REC04</td><td>Praça Ministro Salgado Filho, s/n</td><td>IMBIRIBEIRA</td><td>RECIFE</td><td>PE</td><td>51210-010</td><td>2ª a sexta 06:00hs até 21:00hs.Sáb. 06:00hs às 13:00hs.</td></tr>
+            <tr data-uf="PE"><td>REC05</td><td>Rua Monte Castelo, 254</td><td>BOA VISTA</td><td>RECIFE</td><td>PE</td><td>50050-310</td><td>2a. A sex 08:00h às 18:00hs</td></tr>
+            <tr data-uf="PE"><td>REC06</td><td>Av Conselheiro Aguiar, 3735, Boa Viagem, Recife/PE</td><td>GRACAS</td><td>RECIFE</td><td>PE</td><td>52050-310</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="PE"><td>REC</td><td>Praça Ministro Salgado Filho, s/n</td><td>IMBIRIBEIRA</td><td>RECIFE</td><td>PE</td><td>51210-902</td><td>2a. A sex 06:00h às 24:00h e sáb das 06:00h às 18:00h.</td></tr>
+            <tr data-uf="RS"><td>RIA</td><td>Avenida Borges de Medeiros, nº 2137</td><td>NOSSA SENHORA DE FÁTIMA</td><td>SANTA MARIA</td><td>RS</td><td>97015-090</td><td>2a. A Sex 08:00h às 17:30h.</td></tr>
+            <tr data-uf="RJ"><td>RIO01</td><td>Av Alfredo Balthazar da Silveira, 580-Loja 1730</td><td>BARRA DA TIJUCA</td><td>RIO DE JANEIRO</td><td>RJ</td><td>22790-710</td><td>seg å sex 10:00 as 19:00</td></tr>
+            <tr data-uf="RJ"><td>RIO03</td><td>Rua Coraçao de Maria, 451-Loja A</td><td>CACHAMBI</td><td>RIO DE JANEIRO</td><td>RJ</td><td>20775-050</td><td>2a. A sex 09:00h às 17:00hs.</td></tr>
+            <tr data-uf="RJ"><td>RIO04</td><td>Esr Rio São Paulo, 113 Loja CE</td><td>CAMPO GRANDE</td><td>RIO DE JANEIRO</td><td>RJ</td><td>23087-005</td><td>2a. A sex 09:00h às 18:00hs.</td></tr>
+            <tr data-uf="RJ"><td>RIO05</td><td>R ANDRE ROCHA, 00750, LOJ F</td><td>TAQUARA</td><td>RIO DE JANEIRO</td><td>RJ</td><td>22730-522</td><td>2a. A sex 09:00h às 20:00hs. Sáb 09:00h às 12:00h</td></tr>
+            <tr data-uf="MT"><td>ROO</td><td>Av Rui Barbosa, 1526</td><td>CENTRO</td><td>RONDONÓPOLIS</td><td>MT</td><td>78700-130</td><td>2a. A sex 08:00h às 17:00h</td></tr>
+            <tr data-uf="GO"><td>RVD</td><td>AVENIDA ELAVINO MARTINS GUIMARAES, SN, QUADRA 03 LOTE 01 ANEXO ESQ R TELMA GUIM</td><td>RESIDENCIAL JARDIM BOUGAINVILLE</td><td>RIO VERDE</td><td>GO</td><td>75907-791</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>S30PV</td><td>AV SANTOS DUMONT ESQUINA COM AV. SAO MATEUS DO MARANHAO, 246-A, SALA SALAO A</td><td>CIDADE INDUSTRIAL SATELITE DE SAO PAULO</td><td>GUARULHOS</td><td>SP</td><td>07220-000</td><td>2a. A sex 8:30h às 17:00h.</td></tr>
+            <tr data-uf="SP"><td>SAO02</td><td>Rua Bernardo Guimarães, 234</td><td>VILA ANASTACIO</td><td>SÃO PAULO</td><td>SP</td><td>05092-030</td><td>2a. A sex 08:00h às 19:00h; sáb. 09:00h às 13:00h.</td></tr>
+            <tr data-uf="SP"><td>SAO09</td><td>Rua Monte Serrat, 1182</td><td>TATUAPE</td><td>SÃO PAULO</td><td>SP</td><td>03312-001</td><td>seg a sex 08:00h as 18:00h</td></tr>
+            <tr data-uf="SP"><td>SAO12</td><td>Rua Ribeiro Lacerda, 113</td><td>BOSQUE DA SAUDE</td><td>SÃO PAULO</td><td>SP</td><td>04150-000</td><td>2a. A sex 09:00h às 19:00h</td></tr>
+            <tr data-uf="SP"><td>SAO23</td><td>Avenida Engenheiro Caetano Alvares, 1507</td><td>SANTANA</td><td>SÃO PAULO</td><td>SP</td><td>02553-040</td><td>2a. A sex 09:00h às 19:00h.</td></tr>
+            <tr data-uf="SP"><td>SAO24</td><td>Rua Cardeal Arcoverde, 2819</td><td>PINHEIROS</td><td>SÃO PAULO</td><td>SP</td><td>05407-004</td><td>2a. A sex 09:00h às 18:00h.</td></tr>
+            <tr data-uf="SP"><td>SAO25</td><td>Av Aricanduva, 4002</td><td>VILA CALIFORNIA</td><td>SÃO PAULO</td><td>SP</td><td>03490-000</td><td>2a. A sex 08:30h às 17:30h.</td></tr>
+            <tr data-uf="SP"><td>SAO26</td><td>Rua Julio Conceicao, 638</td><td>BOM RETIRO</td><td>SÃO PAULO</td><td>SP</td><td>01126-000</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SP"><td>SAO29</td><td>ITARIRI,71</td><td>CANINDE</td><td>SÃO PAULO</td><td>SP</td><td>03033-060</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>SAO30</td><td>Avenida S Miguel, 2754</td><td>VILA MARIETA</td><td>SÃO PAULO</td><td>SP</td><td>03620-001</td><td>2a. À sex 08:00h às 19:00h</td></tr>
+            <tr data-uf="SP"><td>SAO31</td><td>AV DAS CEREJEIRAS, SN</td><td>JARDIM JAPAQ</td><td>SÃO PAULO</td><td>SP</td><td>02124-001</td><td>2a. A sex 08:00h às 17:30hs.</td></tr>
+            <tr data-uf="SP"><td>SAO32</td><td>Rua Barão de Ladario, 670-Loja 75</td><td>BRAS</td><td>SAO PAULO</td><td>SP</td><td>03010-000</td><td>09:00 as 19:00 2a a sexta</td></tr>
+            <tr data-uf="SP"><td>SAO33</td><td>Avenida Nova Independência, 525</td><td>BROOKLIN NOVO</td><td>SÃO PAULO</td><td>SP</td><td>04570-000</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SP"><td>SAO34</td><td>Rua Miller, 183, loja 18</td><td>CENTRO</td><td>SÃO PAULO</td><td>SP</td><td>03011-011</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="SP"><td>SAO35</td><td>Av: Comendador Alberto Bonfiglioli, 756 Jd Bonfiglioli, São Paulo</td><td>JARDIM BONFIGLIOLI</td><td>SÃO PAULO</td><td>SP</td><td>05593-001</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="SP"><td>SAO36</td><td>RUA ALFREDO PUJOL, 159, LOJA 04</td><td>SANTANA</td><td>SÃO PAULO</td><td>SP</td><td>02017-010</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="SP"><td>SAO37</td><td>AV MARIO HABERFELD, 555, GALPAO04-ASA 04</td><td>PARQUE NOVO MUNDO</td><td>SÃO PAULO</td><td>SP</td><td>02145-900</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="SP"><td>SDA01</td><td>Rua Dona Renata, 4725, Loja 1, Jardim Belvedere - Araras/SP CEP 13600-972</td><td>JARDIM BELVEDERE</td><td>ARARAS</td><td>SP</td><td>13601-200</td><td>2a. A sex 09:00h às 20:00h; sáb das 09h00 às 12h00</td></tr>
+            <tr data-uf="RJ"><td>SDU</td><td>Terminal de cargas Aeroporto Santos Dumont - Avenida Almirante Silvio de Noronha, 399-Cabeceira Sul</td><td>CENTRO</td><td>RIO DE JANEIRO</td><td>RJ</td><td>20021-010</td><td>2a. A sex 09:00h às 18:00h</td></tr>
+            <tr data-uf="ES"><td>SER03</td><td>R. Tiradentes, 99, Parque Residencial anjeiras-Serra ES, CEP: 29.165-380</td><td>PARQUE RESIDENCIAL LARANJEIRAS</td><td>SERRA</td><td>ES</td><td>29165-380</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="ES"><td>SERO4</td><td>AV GETÚLIO VARGAS</td><td>SERRA CENTRO</td><td>SERRA</td><td>ES</td><td>29176-090</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="PE"><td>SET</td><td>Rua Manoel Pereira Lins, 920</td><td>SAO CRISTOVAO</td><td>SERRA TALHADA</td><td>PE</td><td>56903-340</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="SP"><td>SJK</td><td>Avenida Dr João Batista Soares de Queiroz Junior, 890</td><td>JD DAS INDUSTRIAS</td><td>SÃO JOSÉ DOS CAMPOS</td><td>SP</td><td>12240-000</td><td>2a. A sex 08:00h às 19:00h</td></tr>
+            <tr data-uf="SP"><td>SJP</td><td>Avenida dos Estudantes, S/N</td><td>VILA AEROPORTO</td><td>SÃO JOSÉ DO RIO PRETO</td><td>SP</td><td>15025-010</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="SP"><td>SJP02</td><td>Av. General Glicério, 2079 - Vila Maceno, São José do Rio Preto - SP, 15060-000</td><td>VILA MACENO</td><td>SÃO JOSÉ DO RIO PRETO</td><td>SP</td><td>15060-000</td><td>2a. A sex 08:00h às 17:00h</td></tr>
+            <tr data-uf="MG"><td>SLA01</td><td>Av Brasilia, 972, Loja 2</td><td>DUQUESA I (SAO BENEDITO)</td><td>SANTA LUZIA</td><td>MG</td><td>33170-000</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h.</td></tr>
+            <tr data-uf="MA"><td>SLZ</td><td>Avenida Libaneses, 3503-Loja 02</td><td>TIRIRICAL</td><td>SÃO LUÍS</td><td>MA</td><td>65056-480</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="MA"><td>SLZPV</td><td>AVENIDA CEL COLARES MOREIRA, LOJA 29</td><td>RENASCENÇA</td><td>SÃO LUÍS</td><td>MA</td><td>65075-441</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="MT"><td>SMT</td><td>Avenida Tancredo Neves, 2332</td><td>CENTRO</td><td>SORRISO</td><td>MT</td><td>78890-000</td><td>2a. A sex 09:00h às 17:00h</td></tr>
+            <tr data-uf="SP"><td>SOD02</td><td>Avenida Gonçalves Magalhães, 220</td><td>VILA TRUJILLO</td><td>SOROCABA</td><td>SP</td><td>18060-240</td><td>2a. A sex 09:00h às 17:00h</td></tr>
+            <tr data-uf="SP"><td>SOD03</td><td>R MIGUEL ARCANGELO MATIELO, 144-LOJA 03</td><td>JARDIM CAROLINA</td><td>SOROCABA</td><td>SP</td><td>18.103-555</td><td>2a. À sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="RS"><td>SRA</td><td>Av Borges de Medeiros, 635</td><td>CENTRO</td><td>SANTA ROSA</td><td>RS</td><td>98780-001</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SP"><td>SRR01</td><td>Rua Augusto Zanini, 894</td><td>SERTAOZINHO</td><td>SERTAOZINHO</td><td>SP</td><td>14170-100</td><td>2a. A sex 08:30h às 18:00h;</td></tr>
+            <tr data-uf="BA"><td>SSA</td><td>Avenida redo 1485-Ed Esplanada Frade Center</td><td>CENTRO</td><td>SALVADOR</td><td>BA</td><td>41820-021</td><td>2a. A sex 07 hrs ás 22 sáb. 08:00 às 16:00h. E Dom e feriados com atendimento dos võος</td></tr>
+            <tr data-uf="BA"><td>SSA02</td><td>Rua Alameda da Suecia, SN</td><td>São Cristovao</td><td>SALVADOR</td><td>BA</td><td>41510-346</td><td>2a. A sex 09:30h às 18:00h;</td></tr>
+            <tr data-uf="PE"><td>SS201</td><td>Rua Vasconcelos Tavares, 27</td><td>CENTRO</td><td>SANTA CRUZ DO CAPIBARIBE</td><td>PE</td><td>55295-247</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="PA"><td>STM</td><td>Rua Corina Silva de Queiroz, 335</td><td>SAO CRISTOVAO</td><td>SANTARÉM</td><td>PA</td><td>68040-040</td><td>2a. A sex 08:00h às 18:00h; sáb. 08:00h às 12:00h</td></tr>
+            <tr data-uf="SP"><td>SUM02</td><td>Rua Angelo Ongaro, 1452</td><td>CENTRO</td><td>SUMARÉ</td><td>SP</td><td>13170-024</td><td>2a. A sex 09:00h às 18:00h;</td></tr>
+            <tr data-uf="AM"><td>TBT</td><td>Praça Marechal do Ar - Eduardo Gomes, s/n</td><td>AEROPORTO</td><td>TABATINGA</td><td>AM</td><td>69640-000</td><td>2a. A sex 08:00h às 18:00h; sab 08:00h às 11:00h</td></tr>
+            <tr data-uf="AM"><td>TFF</td><td>ESTRADA DO AEROPORTO, 4585</td><td>AEROPORTO</td><td>TEFÉ</td><td>AM</td><td>69555-300</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="MT"><td>TGQ</td><td>R AVELINA JACI BOHN, 572</td><td>JARDIM SANTA LUCIA</td><td>TANGARA DA SERRA</td><td>MT</td><td>78304-006</td><td>segunda á sexta. 08:00h ás 18:00h, Sáb.08:00h ás 12:00h</td></tr>
+            <tr data-uf="PI"><td>THE</td><td>Avenida Centenário, s/n</td><td>AEROPORTO</td><td>TERESINA</td><td>PI</td><td>64006-700</td><td>2a. A sex 08:00h às 18:00h. Sab 08h00 as 12h00</td></tr>
+            <tr data-uf="MS"><td>TJL</td><td>REGIDIO THOME, 613</td><td>JARDIM ALVORADA</td><td>TRÊS LAGOAS</td><td>MS</td><td>79610-091</td><td>2a. A sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="GO"><td>TLZ01</td><td>Rua Vereador Geraldo Gentil Aires, 264</td><td>LOTEAMENTO JARDIM PAULISTA</td><td>CATALAO</td><td>GO</td><td>75702-395</td><td>2a. A sex 09:00h às 18:00hs. Sab 09:00h às 13:00hs</td></tr>
+            <tr data-uf="PR"><td>TOW</td><td>Avenida Parigot de Souza, 708</td><td>JARDIM PORTO ALEGRE</td><td>TOLEDO</td><td>PR</td><td>85906-070</td><td>seg a sex 08:00h às 18:00h;</td></tr>
+            <tr data-uf="PE"><td>TRT01</td><td>Avenida Dorival Jose Pereira, N739 LOJA D, Duque de Caxias, Toritama/PE</td><td>Duque de Caxias</td><td>TORITORAMA</td><td>PE</td><td>55125-000</td><td>2a. A sex 08:00h às 18:00h</td></tr>
+            <tr data-uf="PA"><td>TUR</td><td>AV PERIMETRAL. 123</td><td>COHAB</td><td>TUCURUÍ</td><td>PA</td><td>68459-220</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="BA"><td>TXF</td><td>Marechal Castelo Branco, 333</td><td>CENTRO</td><td>TEIXEIRA DE FREITAS</td><td>BA</td><td>45985-041</td><td>2a. A sex 08:00h as 18:00h; sáb. 08:00h as 12:00h</td></tr>
+            <tr data-uf="MG"><td>UBA</td><td>Avenida Nenë Sabino 2940</td><td>SANTOS DUMONT</td><td>UBERABA</td><td>MG</td><td>38050-501</td><td>2a. A sex 09:00h as 19:00h;</td></tr>
+            <tr data-uf="MG"><td>UDI</td><td>nida Nicomedes Alves dos San 489</td><td>LIDICE</td><td>UBERLÂNDIA</td><td>MG</td><td>38400-170</td><td>2a. A sex 08:30h as 19:00h;</td></tr>
+            <tr data-uf="PR"><td>UMU</td><td>R Doutor Camargo, 5006, Sala 2</td><td>ZONA III</td><td>UMUARAMA</td><td>PR</td><td>87502-010</td><td>Sega Sex das 08:00 as 11:30 e das 13:00 as 18:00hs</td></tr>
+            <tr data-uf="RS"><td>URG</td><td>Rua Tiradentes, 2520</td><td>CENTRO</td><td>URUGUAIANA</td><td>RS</td><td>97501-550</td><td>2a. A sex 08:30h às 18:00h</td></tr>
+            <tr data-uf="PR"><td>UVI</td><td>AV PAULA FREITAS 798, SALA 01</td><td>NS SRA DA SALETE</td><td>UNIÃO DA VITÓRIA</td><td>PR</td><td>84603-110</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="MG"><td>VAG</td><td>Av. Minas Gerais, 256</td><td>REZENDE</td><td>VARGINHA</td><td>MG</td><td>37062-190</td><td>2a. A sex 08:00h às 18:00h.</td></tr>
+            <tr data-uf="SP"><td>VAL02</td><td>Rua Raymundo Bissoto, 229 - B</td><td>JARDIM PRIMAVERA</td><td>VALINHOS</td><td>SP</td><td>13270-320</td><td>2a. A sex 08:00h às 19:00h.</td></tr>
+            <tr data-uf="SP"><td>VCP</td><td>Rodovia Santos Dumont, KM 66, s/n Aeroporto de Viracopos</td><td>JD ITATINGA</td><td>CAMPINAS</td><td>SP</td><td>13052-970</td><td>24 horas</td></tr>
+            <tr data-uf="BA"><td>VDC</td><td>Av. Juracy Magalhães, 78 - Jurema</td><td>BAIRRO JUREMA</td><td>VITÓRIA DA CONQUISTA</td><td>BA</td><td>45023-490</td><td>08:00 as 18:00 seg a sexta sábado 08:00 a 12:00</td></tr>
+            <tr data-uf="SP"><td>VIN02</td><td>Rua dos Pardais, 90</td><td>JARDIM ITALIA</td><td>VINHEDO</td><td>SP</td><td>13289-180</td><td>2a. A sex 08:30h às 18:00h.</td></tr>
+            <tr data-uf="ES"><td>VIX01</td><td>AVENIDA RIO BRANCO, 449, LOJA 01 EDIF GOLDEN CENTER</td><td>SANTA LUCIA</td><td>VITÓRIA</td><td>ES</td><td>29056-253</td><td>2a. A sex 09:00h às 18:00h</td></tr>
+            <tr data-uf="ES"><td>VIX</td><td>Avenida Fernando Ferrari, 3800</td><td>GOIABEIRAS</td><td>VITÓRIA</td><td>ES</td><td>29075-920</td><td>2a. À sex 08:00h às 22:30h. Sáb. 09:00h às 13:00h</td></tr>
+            <tr data-uf="GO"><td>VPA02</td><td>Avenida Marginal-Quadra 42 Lote 01, Esplanada II, Valparaíso de Goiás -GO</td><td>ESPLANADA II</td><td>VALPARAISO DO GOIAS</td><td>GO</td><td>72878-030</td><td>2a. A sex 08:30h às 17:30h</td></tr>
+            <tr data-uf="SC"><td>ΧΑΡ01</td><td>R Vitorio cella, 409, sala 01</td><td>SAO CRISTOVAO</td><td>CHAPECÓ</td><td>SC</td><td>89803-058</td><td>2a. A sex 08:00h às 18:00hs.</td></tr>
+            <tr data-uf="SC"><td>ΧΑΡ</td><td>Rua Rui Barbosa, 556 E-</td><td>CENTRO</td><td>CHAPECÓ</td><td>SC</td><td>89801-040</td><td>2a à sexta 08:00 ao 12:00, 13:00 às 18:00h. Sábado 09:00 ao 12:00 h</td></tr>
+            <tr data-uf="SP"><td>ZBW01</td><td>Rua Padre Francisco Rodrigues dos Santos, 101</td><td>CENTRO</td><td>ATIBAIA</td><td>SP</td><td>12940-280</td><td>2a. A sex 09:00h às 18:45hs.</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ufSelect = document.getElementById('uf-select');
+            const tableBody = document.getElementById('locations-table').querySelector('tbody');
+            const tableRows = tableBody.querySelectorAll('tr');
+
+            // Function to filter the table
+            function filterTable() {
+                const selectedValue = ufSelect.value;
+
+                tableRows.forEach(row => {
+                    const rowUf = row.dataset.uf; // Get UF from data-uf attribute
+
+                    if (selectedValue === 'all' || selectedValue === rowUf) {
+                        row.style.display = ''; // Show row
+                    } else {
+                        row.style.display = 'none'; // Hide row
+                    }
+                });
+            }
+
+            // Add event listener to the select dropdown
+            ufSelect.addEventListener('change', filterTable);
+
+            // Initial filter call in case the page loads with a pre-selected value (optional)
+            // filterTable(); 
+        });
+    </script>
+
+</body>
+</html>
